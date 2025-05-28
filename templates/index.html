@@ -1,106 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube Downloader</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Custom styles for Inter font and general body styling */
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>YouTube Downloader</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="/static/script.js" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gradient-to-br from-purple-600 to-indigo-800 min-h-screen flex items-center justify-center p-4">
-    <div class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md text-center">
-        <h2 class="text-3xl font-extrabold text-gray-900 mb-6">Download YouTube Video</h2>
+<body class="bg-gradient-to-br from-slate-100 to-blue-200 min-h-screen flex items-center justify-center px-4">
+  <div class="bg-white shadow-2xl rounded-3xl p-8 max-w-md w-full space-y-6 border border-slate-200">
+    <h1 class="text-2xl md:text-3xl font-bold text-blue-600 text-center">🎬 YouTube Downloader</h1>
 
-        <form id="download-form" class="space-y-6">
-            <input
-                type="text"
-                name="url"
-                placeholder="Enter YouTube URL here..."
-                required
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-800 placeholder-gray-500 text-base"
-            >
+    <form id="download-form" class="space-y-4">
+      <input
+        type="text"
+        name="url"
+        placeholder="Enter YouTube URL"
+        required
+        class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+      />
 
-            <select
-                name="type"
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-800 bg-white appearance-none pr-8"
-            >
-                <option value="video">Video</option>
-                <option value="audio">Audio (MP3)</option>
-            </select>
+      <select
+        name="type"
+        class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+      >
+        <option value="video">🎥 Download Video (MP4)</option>
+        <option value="audio">🎵 Download Audio (MP3)</option>
+      </select>
 
-            <button
-                type="submit"
-                class="w-full bg-indigo-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition duration-300 ease-in-out transform hover:scale-105"
-            >
-                Download
-            </button>
-        </form>
+      <button
+        type="submit"
+        class="w-full bg-blue-600 text-white font-semibold py-3 rounded-xl hover:bg-blue-700 transition duration-200"
+      >
+        ⬇️ Download
+      </button>
+    </form>
 
-        <p id="status" class="mt-6 text-lg text-gray-700"></p>
-    </div>
-
-    <script>
-        // Placeholder for your JavaScript logic.
-        // This is where you would add the code to handle form submission,
-        // make API calls for downloading, and update the status message.
-        document.addEventListener('DOMContentLoaded', () => {
-            const downloadForm = document.getElementById('download-form');
-            const statusParagraph = document.getElementById('status');
-
-            downloadForm.addEventListener('submit', async (event) => {
-                event.preventDefault(); // Prevent default form submission
-
-                statusParagraph.textContent = 'Processing your request...';
-                statusParagraph.classList.remove('text-green-600', 'text-red-600');
-                statusParagraph.classList.add('text-gray-700');
-
-                const urlInput = downloadForm.elements['url'].value;
-                const typeInput = downloadForm.elements['type'].value;
-
-                // Simulate an API call
-                try {
-                    // In a real application, you would send this data to your backend
-                    // For example:
-                    // const response = await fetch('/download', {
-                    //     method: 'POST',
-                    //     headers: {
-                    //         'Content-Type': 'application/json',
-                    //     },
-                    //     body: JSON.stringify({ url: urlInput, type: typeInput }),
-                    // });
-                    //
-                    // if (response.ok) {
-                    //     const result = await response.json();
-                    //     statusParagraph.textContent = `Download initiated: ${result.message || 'Check your downloads!'}`;
-                    //     statusParagraph.classList.remove('text-gray-700');
-                    //     statusParagraph.classList.add('text-green-600');
-                    // } else {
-                    //     const errorData = await response.json();
-                    //     statusParagraph.textContent = `Error: ${errorData.message || 'Something went wrong.'}`;
-                    //     statusParagraph.classList.remove('text-gray-700');
-                    //     statusParagraph.classList.add('text-red-600');
-                    // }
-
-                    // --- Mocking a successful response for demonstration ---
-                    await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate network delay
-                    statusParagraph.textContent = `Download for ${typeInput} initiated successfully!`;
-                    statusParagraph.classList.remove('text-gray-700');
-                    statusParagraph.classList.add('text-green-600');
-                    // --- End Mock ---
-
-                } catch (error) {
-                    console.error('Download error:', error);
-                    statusParagraph.textContent = 'An unexpected error occurred. Please try again.';
-                    statusParagraph.classList.remove('text-gray-700');
-                    statusParagraph.classList.add('text-red-600');
-                }
-            });
-        });
-    </script>
+    <p id="status" class="text-center text-gray-700 text-sm"></p>
+  </div>
 </body>
 </html>

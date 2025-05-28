@@ -12,6 +12,12 @@ RUN apt-get update && \
     apt-get install -y ffmpeg && \
     rm -rf /var/lib/apt/lists/*
 
+
+    # Install ffmpeg and system tools
+RUN apt-get update && \
+    apt-get install -y ffmpeg curl && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 # Copy files
 COPY . .
 
@@ -28,3 +34,10 @@ EXPOSE 8080
 CMD ["python", "app.py"]
 
 EXPOSE 8080
+
+
+
+
+
+
+
