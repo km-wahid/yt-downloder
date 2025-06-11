@@ -5,7 +5,7 @@ A simple web application to download YouTube videos and audio by pasting a link.
 ## Features
 
 * Paste a YouTube URL to download.
-* Supports video and audio downloads.
+
 
 ## Prerequisites
 
